@@ -1,0 +1,69 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy to TestFlight
+
+# Controls when the action will run. 
+on:
+  push:
+    branches: [ main, feature/github-actions ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macos-10.15
+
+    env:
+      APP_STORE_CONNECT_KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
+      ROVE_SECURE_PASSPHRASE: ${{ secrets.ROVE_SECURE_PASSPHRASE }}
+      KEYCHAIN: ${{ 'test.keychain' }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'github-actions@johncoates.dev'
+
+      - name: Setup Codesigning
+        run: |
+          pushd Secure
+          gpg --decrypt --output "ios_distribution.cer" --passphrase $ROVE_SECURE_PASSPHRASE --pinentry-mode=loopback ios_distribution.cer.gpg
+          gpg --decrypt --output "ios_distribution.p12" --passphrase $ROVE_SECURE_PASSPHRASE --pinentry-mode=loopback ios_distribution.p12.gpg
+          gpg --decrypt --output "Rove_Distribution.mobileprovision" --passphrase $ROVE_SECURE_PASSPHRASE --pinentry-mode=loopback Rove_Distribution.mobileprovision.gpg
+          popd
+
+          security create-keychain -p "" "$KEYCHAIN"
+          security list-keychains -s "$KEYCHAIN"
+          security default-keychain -s "$KEYCHAIN"
+          security unlock-keychain -p "" "$KEYCHAIN"
+          security set-keychain-settings
+          security list-keychains
+          security import "./Secure/ios_distribution.p12" -k "$KEYCHAIN" -P "" -A
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KEYCHAIN"
+
+          UUID=`/usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin <<< $(security cms -D -i ./Secure/Rove_Distribution.mobileprovision)`
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          cp "./Secure/Rove_Distribution.mobileprovision" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
+          
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7.2'
+      
+      - name: Install Fastlane
+        run: |
+          which ruby
+          ruby --version
+          which bundle
+          bundle --version
+          bundle install
+
+      - name: Build & Deploy With Fastlane
+        run: bundle exec fastlane beta --verbose
