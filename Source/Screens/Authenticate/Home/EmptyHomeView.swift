@@ -19,7 +19,7 @@ final class EmptyHomeView: UIScrollView {
     private let container = UIView()
     private let image = UIImageView()
     private let descriptionLabel = Label(text: .description)
-    private let uploadButton = WideButton(label: .upload)
+    let uploadButton = WideButton(label: .upload)
 
     // MARK: - Setup
 
