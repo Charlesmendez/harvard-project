@@ -17,16 +17,11 @@ class SignUpViewController: UIViewController, UIScrollViewDelegate {
         signUpView.delegate = self
         view = signUpView
     }
-//    // Show the keybord
-//    func viewDidAppear( animated: Bool) {
-//        super.viewDidAppear(animated)
-//        view.becomeFirstResponder()
-//    }
-    // Closes keyboard when tap in screen
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         registerEvents()
+        submitTapped()
     }
     // MARK: - Register Events
 
@@ -42,21 +37,55 @@ class SignUpViewController: UIViewController, UIScrollViewDelegate {
             print("missing field data")
             return
         }
+//      Sign up the user and check if the user exists
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
           // ...
-        }
-        //present(HomeViewController(), animated: true)
-        let vc = HomeViewController()
-        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-        self.present(vc, animated: true, completion: nil)
-    }
+            if error != nil {
+
+                if let errCode = AuthErrorCode(rawValue: error!._code) {
+
+                                switch errCode {
+                                case.invalidEmail :
+                                        print("invalid email")
+                                case .emailAlreadyInUse:
+                                    self.showAlertEmailExists(self)
+                                        //print("in use")
+                                    default:
+                                        print("Create User Error: \(error!)")
+                                }
+                            }
+
+                        }
+                            else {
+//                            print("all good... continue")
+                                // take user to the Home View when Submit Tapped.
+                                let vc = HomeViewController()
+                                vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+                                self.present(vc, animated: true, completion: nil)
+                            }
+                        }
+        } 
     // MARK: - Re direction if Signed in tapped
 
     @objc
     private func signInTapped() {
-//        let detailVC = HomeViewController()
-//        let navigationController = UINavigationController(rootViewController: detailVC)
-//        navigationController.modalPresentationStyle = .fullScreen
+        let vc = SignInViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
         print("signin botton tapped")
     }
+    @IBAction func showAlertEmailExists(_ sender: Any) {
+
+           // create the alert
+           let alert = UIAlertController(title: "Email taken", message: "Email already in use. Try with another one.", preferredStyle: UIAlertController.Style.alert)
+
+           // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in let vc = SignInViewController()
+                                        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+                                        self.present(vc, animated: false, completion: nil) }))
+           // show the alert
+        DispatchQueue.main.async {
+             self.present(alert, animated: true, completion: nil)
+        }
+       }
 }

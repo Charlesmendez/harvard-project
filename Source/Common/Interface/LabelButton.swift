@@ -30,14 +30,14 @@ final class LabelButton: UIButton {
 
     // MARK: - Setup
 
-    private let label: Label
+    let label: Label
 
-    private func configure() {
+    func configure() {
         label.numberOfLines = 0
         label.textAlignment = .center
     }
 
-    private func constrain() {
+    func constrain() {
         addConstrained(subview: label)
 
         NSLayoutConstraint.activate([

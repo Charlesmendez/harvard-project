@@ -5,7 +5,6 @@
 //  Created by Carlos Fernando Mendez Solano on 4/26/21.
 //
 
-
 import UIKit
 import Firebase
 import AuthenticationServices
@@ -47,9 +46,20 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     @objc func showImagePickerController() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
         }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: { if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        { let vc = PhotoImageViewController()
+            self.present(vc, animated: true, completion: nil)
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+            let vc = PhotoImageViewController()
+            self.present(vc, animated: true, completion: nil)
+            //profileImageView.image = originalImage
+        }
+        })
         }
     }

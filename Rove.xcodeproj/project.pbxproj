@@ -11,6 +11,10 @@
 		9DDEAA9226338FDF006D087B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DDEAA9126338FDF006D087B /* GoogleService-Info.plist */; };
 		9DDEAAD426373B80006D087B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEAAD326373B80006D087B /* HomeViewController.swift */; };
 		9DDEAAD726373BB6006D087B /* EmptyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEAAD626373BB6006D087B /* EmptyHomeView.swift */; };
+		9DFB5906263A5374002D1509 /* PhotoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB5905263A5374002D1509 /* PhotoScreenView.swift */; };
+		9DFB590A263A538B002D1509 /* PhotoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB5909263A538B002D1509 /* PhotoScreenViewController.swift */; };
+		9DFB591B263B23FE002D1509 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB591A263B23FE002D1509 /* SignInView.swift */; };
+		9DFB591F263B240E002D1509 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB591E263B240E002D1509 /* SignInViewController.swift */; };
 		FA0B573E25B339460014DD06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B573D25B339460014DD06 /* AppDelegate.swift */; };
 		FA0B574025B339460014DD06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B573F25B339460014DD06 /* SceneDelegate.swift */; };
 		FA0B574725B339470014DD06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA0B574625B339470014DD06 /* Assets.xcassets */; };
@@ -47,6 +51,10 @@
 		9DDEAA9126338FDF006D087B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9DDEAAD326373B80006D087B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9DDEAAD626373BB6006D087B /* EmptyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyHomeView.swift; sourceTree = "<group>"; };
+		9DFB5905263A5374002D1509 /* PhotoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScreenView.swift; sourceTree = "<group>"; };
+		9DFB5909263A538B002D1509 /* PhotoScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScreenViewController.swift; sourceTree = "<group>"; };
+		9DFB591A263B23FE002D1509 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		9DFB591E263B240E002D1509 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C00D143FC92672DBFD53EA7A /* Pods_Rove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0B573A25B339460014DD06 /* Rove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0B573D25B339460014DD06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +126,24 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		9DFB5904263A5324002D1509 /* Photoscreen */ = {
+			isa = PBXGroup;
+			children = (
+				9DFB5909263A538B002D1509 /* PhotoScreenViewController.swift */,
+				9DFB5905263A5374002D1509 /* PhotoScreenView.swift */,
+			);
+			path = Photoscreen;
+			sourceTree = "<group>";
+		};
+		9DFB5919263B23EE002D1509 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				9DFB591A263B23FE002D1509 /* SignInView.swift */,
+				9DFB591E263B240E002D1509 /* SignInViewController.swift */,
+			);
+			path = "Sign In";
+			sourceTree = "<group>";
+		};
 		B4856A65FACDE37ABB193E42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +208,7 @@
 		FAFDD3AA25B5F65E0026CF50 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9DFB5904263A5324002D1509 /* Photoscreen */,
 				FAFDD3AB25B5F67F0026CF50 /* Authenticate */,
 			);
 			path = Screens;
@@ -190,6 +217,7 @@
 		FAFDD3AB25B5F67F0026CF50 /* Authenticate */ = {
 			isa = PBXGroup;
 			children = (
+				9DFB5919263B23EE002D1509 /* Sign In */,
 				FAFDD3AC25B5F6860026CF50 /* Sign Up */,
 				9DDEAA9726352046006D087B /* Home */,
 				FAFDD3C925B60ECD0026CF50 /* Views */,
@@ -444,15 +472,19 @@
 				9DDEAAD426373B80006D087B /* HomeViewController.swift in Sources */,
 				FAFDD3EE25B62FFE0026CF50 /* WideButton.swift in Sources */,
 				FAFDD3CF25B60EF80026CF50 /* LabeledTextField.swift in Sources */,
+				9DFB591B263B23FE002D1509 /* SignInView.swift in Sources */,
 				FAFDD40725B65E100026CF50 /* Critical.swift in Sources */,
 				FAFDD3F225B631AE0026CF50 /* UIColor+Theme.swift in Sources */,
 				FAFDD40B25B662700026CF50 /* Forward.swift in Sources */,
 				FAFDD3F925B636260026CF50 /* ImageButton.swift in Sources */,
 				FAFDD3FD25B63AAE0026CF50 /* LabelButton.swift in Sources */,
+				9DFB5906263A5374002D1509 /* PhotoScreenView.swift in Sources */,
 				FAFDD40325B65AFF0026CF50 /* NSAttributedString+Modifiers.swift in Sources */,
 				FAFDD3C725B60E110026CF50 /* UIView+AutoLayout.swift in Sources */,
+				9DFB591F263B240E002D1509 /* SignInViewController.swift in Sources */,
 				FAFDD3E525B619400026CF50 /* UIStackView+Convenience.swift in Sources */,
 				FAFDD3BC25B5F6C70026CF50 /* SignUpViewModel.swift in Sources */,
+				9DFB590A263A538B002D1509 /* PhotoScreenViewController.swift in Sources */,
 				FAFDD3C325B6095F0026CF50 /* SignUpView.swift in Sources */,
 				FAFDD3E125B6105A0026CF50 /* UIFont+Embedded.swift in Sources */,
 				FAFDD3F625B633830026CF50 /* Label.swift in Sources */,
