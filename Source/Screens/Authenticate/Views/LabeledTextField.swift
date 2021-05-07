@@ -10,7 +10,6 @@ final class LabeledTextField: ProgrammaticView {
     private let label = UILabel()
     public let field = PaddedTextField(horizontalPadding: 16)
     private let stackView = UIStackView()
-    
     @Forward(\LabeledTextField.field.textContentType)
     var textContentType: UITextContentType!
 
@@ -55,14 +54,16 @@ final class LabeledTextField: ProgrammaticView {
         stackView.addArrangedSubviews(label, field)
 
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-
+        let fieldHeight = field.heightAnchor.constraint(equalToConstant: 48)
+        fieldHeight.priority = .defaultHigh
+        
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            field.heightAnchor.constraint(equalToConstant: 48)
+            fieldHeight
+            
         ])
     }
 }

@@ -9,7 +9,6 @@ import UIKit
 
 final class SignInView: UIScrollView {
     required init(coder aDecoder: NSCoder) { fatalError("Not defined") }
-    
     init() {
         super.init(frame: .zero)
         configure()
@@ -46,7 +45,6 @@ final class SignInView: UIScrollView {
             controlsStackView.axis = .vertical
             controlsStackView.spacing = 16
             controlsStackView.alignment = .fill
-            
             signUpButton.backgroundColor = nil
             signUpButton.textColor = .white
             signUpButton.layer.borderWidth = 1
@@ -57,7 +55,6 @@ final class SignInView: UIScrollView {
             addConstrained(subviews: logoView, controlsStackView, forgotPasswordButton, signUpButton)
             controlsStackView.addArrangedSubviews(emailInput, passwordInput, signInButton, dontHaveAnAccount)
             let xPadding: CGFloat = 24
-            
             NSLayoutConstraint.activate([
                 logoView.centerXAnchor.constraint(equalTo: centerXAnchor),
                 logoView.topAnchor.constraint(equalTo: topAnchor, constant: xPadding),
@@ -87,9 +84,6 @@ fileprivate extension String {
                                                         comment: "Label above sign up button on sign in screen")
 
     static let signUpButton = NSLocalizedString("Sign Up", comment: "Label for sign up button")
-    
     static let email = NSLocalizedString("Email", comment: "Input label for email on sign up screen")
-    
     static let password = NSLocalizedString("Password", comment: "Input label for password on sign up screen")
-    
 }

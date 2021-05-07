@@ -78,7 +78,3 @@ final class SignInViewController: UIViewController, UIScrollViewDelegate {
             self.present(vc, animated: true, completion: nil)
             }
 }
-    
-
-    
-

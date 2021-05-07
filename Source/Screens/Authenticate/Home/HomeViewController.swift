@@ -13,6 +13,7 @@ import FirebaseAuth
 class HomeViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - View Lifecycle
+    var imageArray = [UIImage]()
 
     public var emptyView: EmptyHomeView!
 
@@ -24,7 +25,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     }
 
     // MARK: - Register Events, Bindings
-
+    
+//    func viewDidApppear() {
+//        super.viewDidAppear(true)
+//        dump(imageArray)
+//
+//    }
+    
     func registerEvents() {
 
     }
@@ -51,14 +58,19 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         present(imagePickerController, animated: true, completion: nil)
         }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        dismiss(animated: true, completion: { if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        dismiss(animated: false, completion: { [self] in if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         { let vc = PhotoImageViewController()
-            self.present(vc, animated: true, completion: nil)
+            vc.image = editedImage
+            imageArray.append(editedImage)
+            dump(imageArray)
+            self.present(vc, animated: false, completion: nil)
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             let vc = PhotoImageViewController()
-            self.present(vc, animated: true, completion: nil)
-            //profileImageView.image = originalImage
+            vc.image = originalImage
+            imageArray.append(originalImage)
+            dump(imageArray)
+            self.present(vc, animated: false, completion: nil)
         }
         })
         }
