@@ -12,6 +12,7 @@ import FirebaseAuth
 import Parsing
 
 class PhotoImageViewController: UIViewController, UIScrollViewDelegate {
+    static var nodeArray = [String]()
     @IBOutlet var imageView: UIImageView!
     var image: UIImage?
     // MARK: - View Lifecycle
@@ -51,6 +52,10 @@ class PhotoImageViewController: UIViewController, UIScrollViewDelegate {
         let allSpecials = Many(specialString)
         if let results = allSpecials.parse(description) {
             print(results)
+            for result in results{
+                PhotoImageViewController.nodeArray.append(String(result))
+            }
+            dump(PhotoImageViewController.nodeArray)
             if results.isEmpty{
                 print(currentDateTime)
             }
@@ -59,6 +64,8 @@ class PhotoImageViewController: UIViewController, UIScrollViewDelegate {
           }
         let vc = GraphViewController()
         vc.image = image
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: false, completion: nil)
     }
 }
+

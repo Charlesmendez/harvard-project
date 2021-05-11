@@ -22,23 +22,15 @@ class GraphViewController: UIViewController, UIScrollViewDelegate {
     override func loadView() {
         graphView = GraphView()
         graphView.delegate = self
-        graphView.imageView.image = image
-        // stackview attempt
         view = graphView
-//        view.addSubview(imageView)
-//        let nodes = UIStackView(arrangedSubviews: [view])
-//        nodes.axis = .vertical
-//        setupNavBar()
-
     }
     // MARK: - Register Events, Bindings
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         registerEvents()
-        let otherVC = HomeViewController()
-        //imageArray2 = otherVC.imageArray
-        //print(imageArray2)
+       // nodes.axis = .vertical
+        
     }
     func registerEvents() {
         graphView.photoButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)

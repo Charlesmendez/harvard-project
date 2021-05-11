@@ -40,8 +40,8 @@ class PhotoImageView: UIScrollView {
         NSLayoutConstraint.activate([
         descriptionInput.centerXAnchor.constraint(equalTo: centerXAnchor),
         descriptionInput.topAnchor.constraint(equalTo: centerYAnchor, constant: -90),
-        descriptionInput.widthAnchor.constraint(equalToConstant: 57),
-            descriptionInput.field.heightAnchor.constraint(equalToConstant: 80),
+        //descriptionInput.widthAnchor.constraint(equalToConstant: 57),
+        descriptionInput.field.heightAnchor.constraint(equalToConstant: 80),
         controlsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: xPadding),
         controlsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -xPadding),
         storeButton.centerXAnchor.constraint(equalTo: centerXAnchor),

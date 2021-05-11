@@ -13,7 +13,7 @@ import FirebaseAuth
 class HomeViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - View Lifecycle
-    var imageArray = [UIImage]()
+    static var imageArray = [UIImage]()
 
     public var emptyView: EmptyHomeView!
 
@@ -25,7 +25,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     }
 
     // MARK: - Register Events, Bindings
-    
 //    func viewDidApppear() {
 //        super.viewDidAppear(true)
 //        dump(imageArray)
@@ -61,15 +60,15 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         dismiss(animated: false, completion: { [self] in if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         { let vc = PhotoImageViewController()
             vc.image = editedImage
-            imageArray.append(editedImage)
-            dump(imageArray)
+            HomeViewController.imageArray.append(editedImage)
+            //dump(HomeViewController.imageArray)
             self.present(vc, animated: false, completion: nil)
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             let vc = PhotoImageViewController()
             vc.image = originalImage
-            imageArray.append(originalImage)
-            dump(imageArray)
+            HomeViewController.imageArray.append(originalImage)
+            //dump(HomeViewController.imageArray)
             self.present(vc, animated: false, completion: nil)
         }
         })
