@@ -9,8 +9,8 @@ Rove is a an IOs app for networked memory. Basically all photo-storage apps work
 Installation:
 Although below you can see step by step instructions I made a video just in case https://youtu.be/7I0Jswl2WtE
 1) Make sure you have a Mac and latest version of Xcode installed
-2) Copy the project folder in your Mac. The folder contains all the Pods needed to run the project so no 
-    need to install pods.
+2) Download from Github the project via the ZIP file. Copy the project folder in your Mac. The folder 
+    contains all the Pods needed to run the project so no need to install pods.
 3) Double clic on the the Rove.xcworkspace file
 4) Xcode should open up and load the project
 5) Select Iphone 12 Pro as the default simulator simulator
