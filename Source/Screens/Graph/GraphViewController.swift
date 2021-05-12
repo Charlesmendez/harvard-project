@@ -14,7 +14,7 @@ import Parsing
 class GraphViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var imageView: UIImageView!
     var image: UIImage?
-    //var imageArray2 = [UIImage]()
+    
     // MARK: - View Lifecycle
 
     private var graphView: GraphView!

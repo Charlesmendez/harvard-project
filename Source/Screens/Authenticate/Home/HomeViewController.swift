@@ -25,11 +25,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     }
 
     // MARK: - Register Events, Bindings
-//    func viewDidApppear() {
-//        super.viewDidAppear(true)
-//        dump(imageArray)
-//
-//    }
     
     func registerEvents() {
 
@@ -56,19 +51,18 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
         }
+    // Picker to select the media and edit it. Once selected send the user to the other view. It also appends the image to the image array.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         dismiss(animated: false, completion: { [self] in if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         { let vc = PhotoImageViewController()
             vc.image = editedImage
             HomeViewController.imageArray.append(editedImage)
-            //dump(HomeViewController.imageArray)
             self.present(vc, animated: false, completion: nil)
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             let vc = PhotoImageViewController()
             vc.image = originalImage
             HomeViewController.imageArray.append(originalImage)
-            //dump(HomeViewController.imageArray)
             self.present(vc, animated: false, completion: nil)
         }
         })

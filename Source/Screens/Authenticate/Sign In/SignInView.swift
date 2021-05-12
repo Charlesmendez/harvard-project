@@ -31,7 +31,6 @@ final class SignInView: UIScrollView {
         func configure() {
             backgroundColor = .roveBlack
             alwaysBounceVertical = true
-            
             container.accessibilityIdentifier = "container"
             logoView.image = UIImage(named: "Authentication/Logo")
             emailInput.autocapitalizationType = .none
@@ -59,8 +58,7 @@ final class SignInView: UIScrollView {
                 logoView.centerXAnchor.constraint(equalTo: centerXAnchor),
                 logoView.topAnchor.constraint(equalTo: topAnchor, constant: xPadding),
                 logoView.widthAnchor.constraint(equalToConstant: 57),
-                logoView.heightAnchor.constraint(equalToConstant: 80),
-                
+                logoView.heightAnchor.constraint(equalToConstant: 80),                
                 controlsStackView.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 64),
                 controlsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: xPadding),
                 controlsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -xPadding),

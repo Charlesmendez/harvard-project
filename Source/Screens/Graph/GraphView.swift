@@ -25,11 +25,8 @@ class GraphView: UIScrollView {
     let stackView = UIStackView(arrangedSubviews: [])
     var nodeDictionary = [String: String]()
     // MARK: - Setup
-    
-
     override func layoutSubviews() {
         super.layoutSubviews()
-        //imageView.roundedImage()
     }
     
     func configure() {
@@ -39,15 +36,13 @@ class GraphView: UIScrollView {
         controlsStackView.spacing = 16
         controlsStackView.alignment = .fill
         container.accessibilityIdentifier = "container"
-        //imageView.contentMode = .top
-        //dump(imageArray2)
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
         stackView.spacing = 40
     }
     var nodeList = [Node]()
-    func constrain(){
+    func constrain() {
         addConstrained(subviews: controlsStackView, stackView)
         controlsStackView.addArrangedSubviews(photoButton)
         let xPadding: CGFloat = 24
@@ -61,8 +56,7 @@ class GraphView: UIScrollView {
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
         stackView.topAnchor.constraint(equalTo: centerYAnchor, constant: -350),
         //This is making the space where all the images are. All share the same space.
-        stackView.widthAnchor.constraint(equalToConstant: 50),
-        //stackView.heightAnchor.constraint(equalToConstant: 600)
+        stackView.widthAnchor.constraint(equalToConstant: 50)
         ])
         // Append to the class the image and the parent and child tags
         
@@ -81,17 +75,13 @@ class GraphView: UIScrollView {
             node.parent = tags[0]
             node.child = tags[1]
             node.imageView = imageView
-            //print(node.image)
-            //let CGFloat = imageView.bounds.origin
-            //print(CGFloat)
-            //print(node.parent!)
-            //print(node.child!)
             view.layoutIfNeeded()
             let origin = imageView.frame.origin
             print("origin", origin)
             }
         
     }
+    // Function to be able to get the fram of each node and logic to connect the nodes.
     override func didMoveToWindow() {
         layoutIfNeeded()
         print("window", window)
@@ -108,7 +98,7 @@ class GraphView: UIScrollView {
         }
     }
     
-    // Draw the lines to connect the nodes.
+    // Function to draw the lines to connect the nodes.
     func drawLineFromPoint(point1:CGPoint, point2:CGPoint) {
         let path = UIBezierPath()
         path.move(to: point1)
@@ -124,6 +114,7 @@ class GraphView: UIScrollView {
 fileprivate extension String {
     static let photoButton = NSLocalizedString("Add media", comment: "Label for photo button on graph screen")
     }
+// Class to store the image array and tags array
 class Node{
     var image: UIImage
     var imageView: UIImageView?
@@ -133,16 +124,3 @@ class Node{
     self.image = image
     }
 }
-
-//              var counter = 1
-//              for tag in PhotoImageViewController.nodeArray {
-//                if (counter % 2 == 0) {
-//                    node.child = tag
-//                    counter += 1
-//                } else {
-//                    node.parent = tag
-//                    counter += 1
-//                }
-//                //print(node.parent!)
-//              }
-              //print(parent)

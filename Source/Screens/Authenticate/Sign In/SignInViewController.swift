@@ -17,9 +17,7 @@ final class SignInViewController: UIViewController, UIScrollViewDelegate {
     override func loadView() {
         super.loadView()
         signInView = SignInView()
-        //signInView.delegate = self
         view = signInView
-        //uploadImageTapped()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +43,7 @@ final class SignInViewController: UIViewController, UIScrollViewDelegate {
             print("missing field data")
             return
             }
-        //Sign up the user and check if the user exists
+        //Sign in user and check if correct email and pass
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard let strongSelf = self else { return }
           // ...

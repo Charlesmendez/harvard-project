@@ -13,10 +13,11 @@
     experts, SwiftUI is still a young technology. Now, implementing the project with UIkit made it harder 
     and the amount of documentation is scarce vs Python or other programming languages.
     
-2) Database and Auth: The selected database was Firebase Auth and Firebase Firestore. The reason
-    was because Firebase automatises many things like SignUp and SignIn. For example you can allow 
-    users to signup with third party providers like Facebook and Google with very few lines of code. 
-    Database management is really simple as well with a very nive GUI. Firebase also manages security. 
+2) Database and Auth: The selected database was Firebase Firestore and Firebase Auth for
+    authentication. The reason was because Firebase automatises many things like SignUp and SignIn. 
+    For example you can allow users to signup with third party providers like Facebook and Google with 
+    very few lines of code. Database management is really simple as well with a very nive GUI. Firebase 
+    also manages security. 
     The downside is that as the product scales it could be expensive but if you manage cache well it 
     should not be a problem.
     To view the users created in Firebase head to Authentication in the Firebase console. In there you will 
@@ -45,7 +46,8 @@
     Some other files like App are created automatically by Xcode. 
     Note: Some of the files in Extensions and Common are files that I have been collected since the 
     beginning of the year from other developers and that I've been putting together for future projects. At 
-    that point I did not keep track of urls or repos for credit.
+    that point I did not keep track of urls or repos for credit. The point is that the main code was all done 
+    for this project and done by me.
     
     
 

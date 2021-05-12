@@ -24,7 +24,6 @@ class PhotoImageViewController: UIViewController, UIScrollViewDelegate {
         photoImageView.delegate = self
         photoImageView.imageView.image = image
         view = photoImageView
-//        setupNavBar()
 
     }
     // MARK: - Register Events, Bindings
@@ -45,7 +44,7 @@ class PhotoImageViewController: UIViewController, UIScrollViewDelegate {
             print(currentDateTime)
             return
             }
-        // PARSER: Uses this library https://github.com/pointfreeco/swift-parsing#getting-started installed via Swift Packages
+        // PARSER: Extracts the words in double brackets. Uses this library https://github.com/pointfreeco/swift-parsing#getting-started installed via Swift Packages
         let specialString = Skip(PrefixThrough("[["))
           .take(PrefixUpTo("]]"))
           .skip(StartsWith("]]"))

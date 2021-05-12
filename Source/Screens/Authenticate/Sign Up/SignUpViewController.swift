@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController, UIScrollViewDelegate {
             print("missing field data")
             return
         }
-//      Sign up the user and check if the user exists
+//      Sign up the user and check if the user exists in Firebase
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
           // ...
             if error != nil {
@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController, UIScrollViewDelegate {
     }
     @IBAction func showAlertEmailExists(_ sender: Any) {
 
-           // create the alert
+           // create the alert that email is taken
            let alert = UIAlertController(title: "Email taken", message: "Email already in use. Try with another one.", preferredStyle: UIAlertController.Style.alert)
 
            // add an action (button)
