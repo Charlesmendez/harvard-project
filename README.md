@@ -1,2 +1,2 @@
 # Rove iOS app
-This is the repository for the Rove iOS app.
+Initial MVP for Rove for Harvard project
